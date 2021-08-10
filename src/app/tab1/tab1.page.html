@@ -1,17 +1,100 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-icon slot="start" name="arrow-back" *ngIf="!security" (click)="securityChange()" class="goBack"></ion-icon>
+
+    <ion-title slot="end" *ngIf="security && !param.isLoggedIn" mode="md">
+      Connexion
+    </ion-title>
+
+    <ion-title slot="end" *ngIf="!security && !param.isLoggedIn" mode="md">
+      Inscription
+    </ion-title>
+
+    <ion-title slot="end" *ngIf="param.isLoggedIn" mode="md" color="tertiary">
+      QR code Scanner
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="content" id="contentScann">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <div *ngIf="loading" class="loading">
+    <div class="centerLoading">
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+  </div>
+
+  <ion-item-group *ngIf="!param.isLoggedIn; else qrCode">
+
+    <div *ngIf="security" class="center">
+
+      <div class="loginForm">
+        <ion-text color="tertiary">
+          <h1>Connexion</h1>
+        </ion-text>
+
+        <input type="email" placeholder="E-mail" [(ngModel)]="email"/>
+        <input type="password" placeholder="Mot de passe" [(ngModel)]="password"/>
+
+        <ion-button (click)="connexion()" expand="block" color="tertiary" shape="round">
+          Se connecter
+        </ion-button>
+     
+        <ion-label>
+          <ion-checkbox mode="md" [(ngModel)]="memoriseId" color="tertiary"></ion-checkbox>
+          <span>Mémoriser vos identifiants</span>
+        </ion-label>
+
+        
+      </div>
+      <ion-label (click)="register()" class="register">
+        Inscription
+      </ion-label>
+  
+
+    </div>
+
+  </ion-item-group> 
+
+  <ng-template #qrCode>
+
+    <div class="center" *ngIf="!commerceSelected">
+      <ion-card *ngFor="let c of param.commerces">
+        <img [src]="c.image" alt="Image du commerce" class="imgCommerce">
+        <ion-card-header>
+          <ion-card-subtitle>
+            {{ c.nom }}
+          </ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <p>{{ c.adress }}</p>
+          <p>{{ c.ville }}</p>
+          <ion-button expand="block" color="tertiary" (click)="selectedCommerce(c.id, c.nom)">Choisir</ion-button>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <div class="center" id="center" *ngIf="commerceSelected">
+
+      <div class="cameraToolbar">
+        <ion-fab vertical="top" horizontal="start" (click)="SwitchFlashLight()">
+          <ion-fab-button color="tertiary">
+            <ion-icon name="flashlight-outline"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list></ion-fab-list>
+        </ion-fab>
+      </div>
+
+      <div class="qr-center">
+        <div id="line" class="animateLine"></div>
+      </div>
+  
+    </div> 
+   
+  </ng-template>
+  
 </ion-content>

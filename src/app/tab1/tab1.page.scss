@@ -1,0 +1,180 @@
+.loading{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 10000000000;
+    left: 0;
+    background: rgba(19, 31, 36, 0.664);
+}
+.dots > span{
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background: #f3eeea;
+    border-radius: 50%;
+    display: inline-block;
+    animation-name:dots;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+.dots > span:nth-child(2){
+    background: #bdc9d3 ;
+    animation-delay: 0.4s;
+}
+.dots > span:nth-child(3){
+    background: #ccc6c1 ;
+    animation-delay: 0.8s;
+}
+@keyframes dots{
+    50%{
+        opacity: 0;
+        transform:scale(0.7) translateY(10px);
+    }
+}
+.centerLoading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.goBack{
+    font-size: 2rem;
+    margin-left: 10px;
+}
+.content{
+    --padding-end: 10px;
+    --padding-start: 10px;
+}
+ion-item-divider{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+ion-item-divider > ion-input{
+    width: 80%;
+    background: rgba(255, 255, 255, 0.055);
+    margin-bottom: 5px;
+}
+.primary{
+    color: #3880ff;
+    font-weight: 600;
+}
+.center{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 80vh;
+}
+qrcode > .qrcode > canvas{
+    width: 200px !important;
+    height: 200px !important;
+}
+.cameraView{
+    --background: transparent none !important;
+}
+ion-content{
+    --background: transparent none !important;
+}
+.whiteBackground{
+    --background: white !important;
+}
+.qr-center{
+    background: transparent;
+    background: url("../../assets/frame.png");
+    background-position: center;
+    background-size: cover;
+    box-shadow: 0px 0px 0px 600px rgba(0, 0, 0, 0.404);
+    width: 300px;
+    height: 300px;
+}
+.imgCommerce{
+    width: 100%;
+    height: 200px;
+}
+.animateLine{
+    width: 100%;
+    height: 6px;
+    content: "";
+    background: #800080;
+    position: relative;
+    top: 5%;
+    transition: 2s linear;
+    box-shadow: 0px -20px 0px 0px rgba(128,0,128,1);
+}
+.bottomLine{
+    top: 100% !important;
+}
+
+ion-fab{
+    position: relative !important;
+    margin-left: -10px;
+}
+.cameraToolbar{
+    width: 300px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px ;
+    margin-top: -30px;
+}
+.loginForm{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+.loginForm > ion-button{
+    font-weight: 800;
+}
+.loginForm > input{
+    margin: 15px 0px 15px 0px!important;
+    border-radius: 20px !important;
+    box-shadow: 0 5px 30px 0px rgba(0, 0, 0, 0.1) !important;
+    padding-left: 10px !important;
+    font-size: 0.8rem !important;
+    color: rebeccapurple !important;
+    font-weight: 800 !important;
+    background: white !important;
+    height: 20px;
+    height: 40px;
+    width: 60%;
+    border: none;
+}
+.loginForm > input::placeholder{
+ color: rebeccapurple !important;
+ font-weight: 800 !important;
+}
+.loginForm > input:focus{
+    outline: none;
+}
+.loginForm > ion-label{
+    font-size: 0.7rem !important;
+    margin-top: 10px !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loginForm > ion-label > ion-checkbox{
+    margin-right: 2px !important;
+}
+.loginForm > ion-label > span{
+    margin-left: 2px !important;
+}
+.loginForm > ion-text > h1{ 
+    font-weight: 800;
+}
+.register{
+    font-size: 1rem;
+    font-weight: 600;
+    color: rgb(68, 62, 62);
+}

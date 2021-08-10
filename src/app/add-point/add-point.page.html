@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title slot="end" mode="md" color="tertiary">{{ prenom }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content id="contentAddPoint">
+  <div class="center">
+    <div class="pointsQuantity">
+      <ion-icon name="chevron-back-outline" (click)="pointsLess()"></ion-icon>
+      <p id="pointsCount">{{ points }}</p>
+      <ion-icon name="chevron-forward-outline" (click)="pointsMore()"></ion-icon>
+    </div>
+    <ion-button expand="block" color="tertiary" class="updatePoints" (click)="upPoints()">Valider</ion-button>
+    <div id="result"></div>
+  </div>
+</ion-content>
